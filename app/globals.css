@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --navy: #0B1F3B;
+  --gold: #C9A227;
+  --cream: #FDFBF7;
+  --slate-text: #0F172A;
+  --slate-muted: #475569;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  color: var(--slate-text);
+  background-color: var(--cream);
+}
+
+/* Asegurar texto visible en secciones de fondo claro */
+section#metodo,
+section#servicios,
+section#faq {
+  color: #0F172A;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+::selection {
+  background-color: rgba(201, 162, 39, 0.2);
+}
+
+/* Subtle pattern overlay */
+.pattern-dots {
+  background-image: radial-gradient(circle at 1px 1px, rgba(201, 162, 39, 0.06) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* Título con resaltado dorado y shimmer sutil */
+@keyframes shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+.hero-title-highlight {
+  background: linear-gradient(
+    90deg,
+    #dbb84a 0%,
+    #f0d875 25%,
+    #C9A227 50%,
+    #f0d875 75%,
+    #dbb84a 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
