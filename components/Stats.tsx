@@ -20,25 +20,26 @@ const stats: StatItem[] = [
 export default function Stats() {
   const ref = useRef(null)
   const isInView = useInView(ref, { once: true, margin: '-100px' })
-  const [counts, setCounts] = useState(stats.map(() => 0))
+  const [counts, setCounts] = useState<(string | number)[]>(stats.map((s) => typeof s.value === 'number' ? 0 : s.value))
 
   useEffect(() => {
     if (!isInView) return
 
     stats.forEach((stat, index) => {
       if (typeof stat.value === 'number') {
+        const target = stat.value
         const duration = 2000
         const steps = 60
-        const increment = stat.value / steps
+        const increment = target / steps
         const stepDuration = duration / steps
 
         let current = 0
         const timer = setInterval(() => {
           current += increment
-          if (current >= stat.value) {
+          if (current >= target) {
             setCounts((prev) => {
               const newCounts = [...prev]
-              newCounts[index] = stat.value as number
+              newCounts[index] = target
               return newCounts
             })
             clearInterval(timer)
@@ -76,11 +77,11 @@ export default function Stats() {
                 {typeof stat.value === 'number' ? (
                   <>
                     {stat.prefix}
-                    {counts[index]}
+                    {typeof counts[index] === 'number' ? counts[index] : 0}
                     {stat.suffix}
                   </>
                 ) : (
-                  stat.value
+                  counts[index] as string
                 )}
               </p>
               <p className="text-slate-600 text-sm md:text-base font-medium">{stat.label}</p>

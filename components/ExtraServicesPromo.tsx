@@ -48,7 +48,7 @@ export default function ExtraServicesPromo() {
                 </div>
               </div>
               <span className="flex-shrink-0 inline-flex items-center justify-center w-12 h-12 rounded-full bg-white/20 text-white group-hover:bg-white/30 transition-colors">
-                <IconArrowRight className="w-6 h-6" />
+                <IconArrowRight />
               </span>
             </div>
           </Link>
