@@ -25,9 +25,6 @@ export const metadata: Metadata = {
       'Estructura tu vida financiera. Sesiones estratégicas que integran finanzas personales, empresariales, estrategia fiscal e inversión.',
     type: 'website',
   },
-  icons: {
-    icon: '/assets/favicon.svg',
-  },
 }
 
 export default function RootLayout({

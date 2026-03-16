@@ -3,31 +3,47 @@
 import { motion } from 'framer-motion'
 import { IconCalendar, IconCheck, IconArrowRight } from './Icons'
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 
 const FORMSUBMIT_URL = 'https://formsubmit.co/yurna@yurnafinance.com'
 
+const TIPO_TO_VALUE: Record<string, string> = {
+  personal: 'Sesión Estratégica Personal',
+  emprendedor: 'Sesión Estratégica para Emprendedores',
+  empresarial: 'Sesión Estratégica Empresarial',
+}
+
 const servicios = [
   { value: '', label: 'Selecciona el tipo de sesión' },
-  { value: 'Sesión Estratégica Personal ($50)', label: 'Sesión Estratégica Personal — $50' },
-  { value: 'Sesión Estratégica para Emprendedores ($100)', label: 'Sesión Estratégica para Emprendedores — $100' },
-  { value: 'Sesión Estratégica Empresarial ($300)', label: 'Sesión Estratégica Empresarial — $300' },
+  { value: 'Sesión Estratégica Personal', label: 'Sesión Estratégica Personal' },
+  { value: 'Sesión Estratégica para Emprendedores', label: 'Sesión Estratégica para Emprendedores' },
+  { value: 'Sesión Estratégica Empresarial', label: 'Sesión Estratégica Empresarial' },
 ]
 
 export default function BookingPage() {
+  const searchParams = useSearchParams()
   const [successPage, setSuccessPage] = useState(false)
   const [nextUrl, setNextUrl] = useState('')
 
+  const tipoFromUrl = searchParams.get('tipo')
+  const preselectedValue = tipoFromUrl && TIPO_TO_VALUE[tipoFromUrl] ? TIPO_TO_VALUE[tipoFromUrl] : ''
+  const isSessionLocked = Boolean(preselectedValue)
+
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      setNextUrl(`${window.location.origin}/agendar?enviado=1`)
+      const params = new URLSearchParams(window.location.search)
+      const enviado = params.get('enviado')
+      params.delete('tipo')
+      if (enviado === '1') params.set('enviado', '1')
+      setNextUrl(`${window.location.origin}/agendar${params.toString() ? `?${params.toString()}` : ''}`)
     }
   }, [])
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('enviado') === '1') {
+    if (typeof window !== 'undefined' && searchParams.get('enviado') === '1') {
       setSuccessPage(true)
     }
-  }, [])
+  }, [searchParams])
 
   if (successPage) {
     return (
@@ -171,17 +187,25 @@ export default function BookingPage() {
             <div>
               <label htmlFor="servicio" className="block text-sm font-semibold text-slate-text mb-1.5">
                 Tipo de sesión <span className="text-gold">*</span>
+                {isSessionLocked && (
+                  <span className="ml-2 text-xs font-normal text-slate-muted">(seleccionado desde la página de servicios)</span>
+                )}
               </label>
               <select
                 id="servicio"
-                name="Servicio"
-                required
-                className="w-full px-4 py-3 rounded-xl border border-card-border text-slate-text focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold bg-white"
+                name={isSessionLocked ? undefined : 'Servicio'}
+                required={!isSessionLocked}
+                value={preselectedValue}
+                disabled={isSessionLocked}
+                className={`w-full px-4 py-3 rounded-xl border border-card-border text-slate-text focus:outline-none focus:ring-2 focus:ring-gold/50 focus:border-gold bg-white ${isSessionLocked ? 'cursor-not-allowed bg-slate-50 opacity-90' : ''}`}
               >
                 {servicios.map((opt) => (
                   <option key={opt.value || 'blank'} value={opt.value}>{opt.label}</option>
                 ))}
               </select>
+              {isSessionLocked && (
+                <input type="hidden" name="Servicio" value={preselectedValue} />
+              )}
             </div>
 
             <div>

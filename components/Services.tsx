@@ -7,7 +7,7 @@ import { IconUser, IconBriefcase, IconBuilding, IconCheck, IconArrowRight } from
 const plans = [
   {
     title: 'Sesión Estratégica Personal',
-    price: '$50',
+    tipo: 'personal',
     for: 'Profesionales e individuos',
     icon: IconUser,
     includes: [
@@ -22,7 +22,7 @@ const plans = [
   },
   {
     title: 'Sesión Estratégica para Emprendedores',
-    price: '$100',
+    tipo: 'emprendedor',
     for: 'Emprendedores',
     icon: IconBriefcase,
     includes: [
@@ -37,7 +37,7 @@ const plans = [
   },
   {
     title: 'Sesión Estratégica Empresarial',
-    price: '$300',
+    tipo: 'empresarial',
     for: 'Empresas',
     icon: IconBuilding,
     includes: [
@@ -149,7 +149,7 @@ export default function Services() {
                 </ul>
                 <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                   <Link
-                    href="/agendar"
+                    href={`/agendar?tipo=${plan.tipo}`}
                     className={`mt-8 inline-flex items-center justify-center gap-2 w-full px-5 py-3.5 rounded-xl font-semibold text-base transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 ${
                       plan.featured
                         ? 'bg-gold hover:bg-gold-light text-navy shadow-gold'
