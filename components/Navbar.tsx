@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 const navLinks = [
@@ -70,11 +71,17 @@ export default function Navbar() {
           <Link
             href="/"
             onClick={(e) => isHome && (e.preventDefault(), scrollToSection('#inicio'))}
-            className={`font-display font-semibold text-xl transition-colors ${
-              isLight ? 'text-slate-text hover:text-gold' : 'text-white hover:text-gold'
-            }`}
+            className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 rounded"
           >
-            Yurna Finance
+            <Image
+              src="/assets/img/yurnalogo.png"
+              alt="Yurna Finance"
+              width={280}
+              height={84}
+              className="h-16 w-auto md:h-[4.25rem] object-contain object-left"
+              priority
+              unoptimized
+            />
           </Link>
 
           <nav className="hidden md:flex items-center gap-8" aria-label="Principal">

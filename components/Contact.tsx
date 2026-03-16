@@ -22,7 +22,7 @@ export default function Contact() {
     setTimeout(() => setStatus({ type: null, message: '' }), 5000)
   }
 
-  const whatsappLink = 'https://wa.me/50766841749?text=Hola,%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios'
+  const whatsappLink = 'https://wa.me/50768973414?text=Hola,%20me%20gustaría%20recibir%20información%20sobre%20sus%20servicios'
 
   return (
     <section id="contacto" className="py-24 md:py-32 bg-slate-50">
@@ -71,7 +71,7 @@ export default function Contact() {
                 </span>
                 <div>
                   <span className="font-semibold block">WhatsApp</span>
-                  <span className="text-carbon/80">+507 6684 1749</span>
+                  <span className="text-carbon/80">+507 6897 3414</span>
                 </div>
               </a>
             </div>

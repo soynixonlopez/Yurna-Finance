@@ -10,7 +10,7 @@ const servicios = [
 ]
 
 export default function ProyectosPage() {
-  const whatsappLink = 'https://wa.me/50766841749?text=Hola,%20me%20interesa%20Proyectos.%20Me%20gustaría%20agendar%20una%20consulta.'
+  const whatsappLink = 'https://wa.me/50768973414?text=Hola,%20me%20interesa%20Proyectos.%20Me%20gustaría%20agendar%20una%20consulta.'
 
   return (
     <main>

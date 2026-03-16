@@ -47,7 +47,7 @@ export default function LegalModal({ isOpen, onClose }: LegalModalProps) {
           <p><strong className="text-slate-text">Última actualización:</strong> 2025.</p>
           <p>Este aviso legal regula el uso del sitio web de Yurna Finance.</p>
           <h3 className="font-semibold text-slate-text mt-4">1. Datos identificativos</h3>
-          <p>Titular: Yurna Finance. Contacto: <a href="mailto:yurna@yurnafinance.com" className="text-gold hover:underline">yurna@yurnafinance.com</a>. WhatsApp: +507 6684 1749.</p>
+          <p>Titular: Yurna Finance. Contacto: <a href="mailto:yurna@yurnafinance.com" className="text-gold hover:underline">yurna@yurnafinance.com</a>. WhatsApp: +507 6897 3414.</p>
           <h3 className="font-semibold text-slate-text mt-4">2. Objeto y aceptación</h3>
           <p>El acceso y uso del sitio implica la aceptación de este aviso. El contenido tiene finalidad informativa sobre los servicios ofrecidos.</p>
           <h3 className="font-semibold text-slate-text mt-4">3. Propiedad intelectual</h3>

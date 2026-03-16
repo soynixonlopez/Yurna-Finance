@@ -55,7 +55,7 @@ export default function FinalCTA() {
             </Link>
           </motion.div>
           <motion.a
-            href="https://wa.me/50766841749?text=Hola,%20me%20interesa%20agendar%20una%20Sesión%20Estratégica%20con%20Yurna%20Finance."
+            href="https://wa.me/50768973414?text=Hola,%20me%20interesa%20agendar%20una%20Sesión%20Estratégica%20con%20Yurna%20Finance."
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ scale: 1.05 }}

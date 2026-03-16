@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import PrivacyModal from './PrivacyModal'
 import LegalModal from './LegalModal'
 
@@ -29,7 +30,16 @@ export default function Footer() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
             {/* Col 1: Marca */}
             <div>
-              <p className="font-display font-semibold text-xl text-white">Yurna Finance</p>
+              <Link href="/" className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-gold rounded">
+                <Image
+                  src="/assets/img/yurnalogo.png"
+                  alt="Yurna Finance"
+                  width={280}
+                  height={84}
+                  className="h-[4.25rem] w-auto object-contain object-left"
+                  unoptimized
+                />
+              </Link>
               <p className="mt-3 text-white/80 text-sm leading-relaxed max-w-xs">
                 Ordena. Cumple. Crece. Arquitectura financiera integral para personas, emprendedores y empresas.
               </p>
@@ -76,12 +86,12 @@ export default function Footer() {
                 </li>
                 <li>
                   <a
-                    href="https://wa.me/50766841749"
+                    href="https://wa.me/50768973414"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="hover:text-gold transition-colors inline-flex items-center gap-2 focus:outline-none focus-visible:text-gold"
                   >
-                    <span className="text-gold">💬</span> WhatsApp +507 6684 1749
+                    <span className="text-gold">💬</span> WhatsApp +507 6897 3414
                   </a>
                 </li>
                 <li>
@@ -97,29 +107,35 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Col 4: Legal */}
+            {/* Col 4: Mis servicios */}
             <div>
               <h3 className="font-display font-semibold text-white text-sm uppercase tracking-wider">
-                Legal
+                Mis servicios
               </h3>
               <ul className="mt-4 space-y-2.5 text-sm">
                 <li>
-                  <button
-                    type="button"
-                    onClick={() => setPrivacyOpen(true)}
-                    className="text-white/80 hover:text-gold transition-colors text-left focus:outline-none focus-visible:text-gold"
+                  <Link
+                    href="/agendar?tipo=personal"
+                    className="text-white/80 hover:text-gold transition-colors focus:outline-none focus-visible:text-gold"
                   >
-                    Política de privacidad
-                  </button>
+                    Sesión Estratégica Personal
+                  </Link>
                 </li>
                 <li>
-                  <button
-                    type="button"
-                    onClick={() => setLegalOpen(true)}
-                    className="text-white/80 hover:text-gold transition-colors text-left focus:outline-none focus-visible:text-gold"
+                  <Link
+                    href="/agendar?tipo=emprendedor"
+                    className="text-white/80 hover:text-gold transition-colors focus:outline-none focus-visible:text-gold"
                   >
-                    Aviso legal
-                  </button>
+                    Sesión para Emprendedores
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/agendar?tipo=empresarial"
+                    className="text-white/80 hover:text-gold transition-colors focus:outline-none focus-visible:text-gold"
+                  >
+                    Sesión Estratégica Empresarial
+                  </Link>
                 </li>
               </ul>
             </div>

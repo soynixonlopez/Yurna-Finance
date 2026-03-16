@@ -100,7 +100,7 @@ No se requieren variables de entorno para el funcionamiento básico. Si necesita
 
 - Las imágenes deben estar en `public/assets/img/`
 - El favicon debe estar en `public/assets/favicon.svg`
-- Los enlaces de WhatsApp están configurados con el número +507 6684 1749
+- Los enlaces de WhatsApp están configurados con el número +507 6897 3414
 
 ## 🚀 Despliegue
 
